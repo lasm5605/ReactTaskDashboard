@@ -2,6 +2,8 @@
 
 A task dashboard for planning your day and checking things off. Add what you need to get done, break bigger tasks into subitems, and watch your to-dos turn into ta-das.
 
+**👉 Use it now: [leafy-capybara-0d6161.netlify.app](https://leafy-capybara-0d6161.netlify.app)**
+
 ## Features
 
 - **Add tasks** with an optional due date and time
@@ -70,38 +72,39 @@ Subitems are stored inside their parent task's `subItems` array. Adding, editing
 
 Tasks are saved in the browser's `localStorage`. Each person who uses the app has their own private list on their own device. Lists don't sync between devices, and clearing browser data erases them.
 
-## Getting started
-
+## Running it locally
+ 
+You only need this to work on the code. To just use the app, open the [live site](https://leafy-capybara-0d6161.netlify.app).
+ 
 You'll need [Node.js](https://nodejs.org/) installed.
-
+ 
 ```bash
 # install dependencies
 npm install
-
+ 
 # start the development server
 npm run dev
 ```
-
+ 
 Then open the local address Vite prints, usually http://localhost:5173.
-
+ 
 ### Other scripts
-
+ 
 ```bash
 npm run build     # build the production version into dist/
 npm run preview   # serve the built version locally to check it
 npm run lint      # check the code with ESLint
 ```
-
+ 
 ## Deploying
-
-The app is fully static, so the contents of `dist/` can be hosted anywhere that serves static files, such as Vercel, Netlify or GitHub Pages.
-
-On Vercel or Netlify, import the GitHub repo and use:
-
+ 
+The live app is hosted on Netlify at **https://leafy-capybara-0d6161.netlify.app**.
+ 
+Netlify builds the site with these settings:
+ 
 - Build command: `npm run build`
 - Output directory: `dist`
-
-For GitHub Pages, set `base: '/<repo-name>/'` in `vite.config.js` before building.
+The app is fully static, with no server or database, so the built `dist/` folder could also be hosted on any other static host, such as Vercel or GitHub Pages.
 
 ## Ideas for later
 
