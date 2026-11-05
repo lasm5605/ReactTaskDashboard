@@ -1,0 +1,76 @@
+/* Colors pulled from the TO DO TA DA palette — tweak to taste */
+.coffee-mug {
+  --mug-teal: #0f7b6c;
+  --mug-fill: #dff3ee;
+  --mug-coffee: #6b4a3a;
+  --mug-steam: #8cc7bc;
+
+  flex-shrink: 0;
+  overflow: visible; /* lets the steam drift above the box */
+}
+
+.coffee-mug__body {
+  fill: var(--mug-fill);
+  stroke: var(--mug-teal);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.coffee-mug__handle {
+  fill: none;
+  stroke: var(--mug-teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.coffee-mug__coffee {
+  fill: var(--mug-coffee);
+  stroke: var(--mug-teal);
+  stroke-width: 1.5;
+}
+
+.coffee-mug__check {
+  fill: none;
+  stroke: var(--mug-teal);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---- Steam animation ---- */
+.wisp {
+  fill: none;
+  stroke: var(--mug-steam);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: steam-rise 2.8s ease-in-out infinite;
+}
+
+/* Stagger the three wisps so they don't move in lockstep */
+.wisp--1 { animation-delay: 0s; }
+.wisp--2 { animation-delay: 0.9s; }
+.wisp--3 { animation-delay: 1.8s; }
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scaleY(0.8);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(1.1);
+  }
+}
+
+/* Respect users who've asked their OS for less motion:
+   show soft, still steam instead of animating it */
+@media (prefers-reduced-motion: reduce) {
+  .wisp {
+    animation: none;
+    opacity: 0.6;
+  }
+}

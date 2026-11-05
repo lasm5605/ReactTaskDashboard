@@ -43,7 +43,7 @@ export function TaskForm({ onAddTask }) {
       type="text"
       value={title}
       onChange={(e) => setTitle(e.target.value)}
-      placeholder="What would you like to get done?"
+      placeholder="What do you need to do?"
       aria-label="New task"
     />
 

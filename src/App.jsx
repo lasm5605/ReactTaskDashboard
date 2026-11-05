@@ -8,6 +8,9 @@ import DynamicDate from './components/Date';
 import { useLocalStorage } from './SaveLocally'
 import { DragDropProvider } from '@dnd-kit/react';
 import { move } from '@dnd-kit/helpers';
+import Stack from "@mui/material/Stack";
+import CoffeeMug from "./components/CoffeeMug";
+
 
 
 
@@ -77,18 +80,29 @@ function App() {
           <img src={logo} className="base" width="150" height="auto" alt="TO DO TA DA" />
         </a>
 
-        <button className="avatar" type="button" aria-label="Account">LS</button>
         </header>
 
         <main className="page">
           <DynamicDate />
-          <h1 className="page__title">{getGreeting(tasks)}</h1>
+          <Stack
+            direction="row"
+            spacing={1.5}
+            sx={{
+              width: "100%",
+              mb: "30px",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {getGreeting(tasks) === 'Coffee first, then Ta Das.' && <CoffeeMug size={44} />}
+            <h1 className="page__title" style={{ margin: 0 }}>{getGreeting(tasks)}</h1>
+          </Stack>
           <div className="layout"></div>
         </main>
       </section>
 
       <div className="flex-container">
-        <div className="column">
+        <div className="column column--main">
           <TaskForm onAddTask={addTask} />
           <section id="center">
             <div className="task-card">
@@ -101,7 +115,7 @@ function App() {
                 <TaskList tasks={visibleTasks} onRemoveTask={removeTask} onUpdateTask={updateTask} />
               </DragDropProvider>
               <div className="task-card__footer">
-                <span>Check it off. Make it a ta da.</span>
+                <span>Check it off. Make it a Ta Da.</span>
               </div>
         </div> 
       </section>
@@ -110,7 +124,7 @@ function App() {
 
         </div>
 
-        <div className="column">
+        <div className="column column--side">
           <aside className="sidebar">
             <div className="motivation">
               <svg className="motivation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -123,7 +137,7 @@ function App() {
 
             <div className="latest">
               <div className="latest__header">
-                <h2 className="latest__title">Latest ta das</h2>
+                <h2 className="latest__title">Latest Ta Das</h2>
               </div>
 
               <ul className="latest__list">
