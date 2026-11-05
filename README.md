@@ -1,16 +1,110 @@
-# React + Vite
+# To Do Ta Da
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A task dashboard for planning your day and checking things off. Add what you need to get done, break bigger tasks into subitems, and watch your to-dos turn into ta-das.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Add tasks** with an optional due date and time
+- **Edit and delete** tasks
+- **Check tasks off.** Completed tasks record the time they were finished.
+- **Overdue warnings** for unfinished tasks that are past their due date
+- **Subitems:** break a task into smaller steps in a collapsible dropdown under the task, and check, edit or delete each one
+- **Drag to reorder** unfinished tasks
+- **To Do / Ta Da tabs** to switch between unfinished and completed tasks
+- **Latest ta-das** sidebar listing recently completed tasks and when they were finished
+- **Time-of-day greetings** that change for morning, afternoon, evening and late night, plus a celebration when everything is done
+- **Saved automatically** in your browser, so your list is still there when you come back
 
-## React Compiler
+## Built with
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/): UI components and state
+- [Vite](https://vite.dev/): development server and production build
+- [MUI](https://mui.com/): icons, buttons and the collapse animation for subitems
+- [dnd-kit](https://dndkit.com/) (`@dnd-kit/react`): drag-and-drop reordering
+- Plain CSS with custom properties (design tokens) for colors, spacing and type
+- `localStorage`: saves tasks in the browser, no backend needed
 
-## Expanding the ESLint configuration
+## How it works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Data
+
+Each task is a plain object:
+
+```js
+{
+  id: "…",              // unique id
+  title: "Grocery shopping",
+  done: false,
+  dueAt: "2026-11-05T17:00",   // optional, from a datetime-local input
+  completedAt: null,           // timestamp set when the task is checked off
+  subItems: [
+    { id: "…", title: "Milk", done: false }
+  ]
+}
+```
+
+`App.jsx` holds the list of tasks in state and passes it down along with functions to add, update and remove tasks. The state is synced to `localStorage`, so every change is saved automatically.
+
+### Components
+
+The app's own files are in `src/`:
+
+| File | What it does |
+|---|---|
+| `main.jsx` | Entry point that mounts the app |
+| `App.jsx` | Holds the task state, the add/update/remove functions, and the page layout (header, greeting, task area, sidebar) |
+| `App.css` | All styles, including the color and spacing tokens at the top |
+| `components/TaskForm.jsx` | The "What would you like to get done?" bar with the due-date picker and Add task button |
+| `components/FilterTabs.jsx` | The To Do / Ta Da tabs |
+| `components/TaskList.jsx` | Renders the list of tasks, or an empty message when there are none |
+| `components/taskitem.jsx` | A single task: checkbox, title, due date, edit/delete buttons, drag handle and subitem dropdown |
+| `components/Subitem.jsx` | A single subitem inside a task |
+| `components/SaveLocally.jsx` | Saving and loading tasks from `localStorage` |
+| `components/Date.jsx` | The current date and time shown above the greeting |
+
+### Subitems
+
+Subitems are stored inside their parent task's `subItems` array. Adding, editing or removing a subitem creates an updated copy of the parent task and passes it to the same `onUpdateTask` function used for tasks. Each task's subitems use their own drag-and-drop group, so they can't be dragged into the main list.
+
+### Saving
+
+Tasks are saved in the browser's `localStorage`. Each person who uses the app has their own private list on their own device. Lists don't sync between devices, and clearing browser data erases them.
+
+## Getting started
+
+You'll need [Node.js](https://nodejs.org/) installed.
+
+```bash
+# install dependencies
+npm install
+
+# start the development server
+npm run dev
+```
+
+Then open the local address Vite prints, usually http://localhost:5173.
+
+### Other scripts
+
+```bash
+npm run build     # build the production version into dist/
+npm run preview   # serve the built version locally to check it
+npm run lint      # check the code with ESLint
+```
+
+## Deploying
+
+The app is fully static, so the contents of `dist/` can be hosted anywhere that serves static files, such as Vercel, Netlify or GitHub Pages.
+
+On Vercel or Netlify, import the GitHub repo and use:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+For GitHub Pages, set `base: '/<repo-name>/'` in `vite.config.js` before building.
+
+## Ideas for later
+
+- Progress ring showing how many of today's tasks are done
+- Dark mode/seasonal themes options
+- Accounts and a backend so lists sync across devices
