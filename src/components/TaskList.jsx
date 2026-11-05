@@ -2,14 +2,28 @@ import { TaskItem } from './taskitem';
 
 export function TaskList({ tasks, onRemoveTask, onUpdateTask }) {
   if (tasks.length === 0) {
-    return <p>Nothing here yet.</p>;
+    return <p className="task-list__empty">Nothing here yet.</p>;
     }
-    const listItems = tasks.map(task =>
+    const listItems = tasks.map((task, index) =>
       <li key={task.id}>
-        <TaskItem task={task} onRemoveTask={onRemoveTask} onUpdateTask={onUpdateTask} />
+        <TaskItem task={task} index={index} onRemoveTask={onRemoveTask} onUpdateTask={onUpdateTask} />
       </li>
     );
 
-  return <ul style={{ listStyle: 'none', padding: 0 }}>{listItems}</ul>;
+  return (
+    <ul class="task-list">
+      {tasks.map((task, index) => (
+        <TaskItem
+          key={task.id}
+          task={task}
+          index={index}
+          onRemoveTask={onRemoveTask}
+          onUpdateTask={onUpdateTask}
+        />
+
+      ))}
+    </ul>
+    
+  )
 }
 

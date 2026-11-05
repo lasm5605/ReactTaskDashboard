@@ -11,11 +11,14 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@dnd-kit/helpers": "^0.5.1",
+    "@dnd-kit/react": "^0.5.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.4.0",
     "@mui/material": "^9.4.0",
     "react": "^19.2.8",
+    "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
