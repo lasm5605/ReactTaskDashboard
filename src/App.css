@@ -67,7 +67,7 @@ button {
 
 /* The container holding the columns */
 .flex-container {
-  margin: 10px;
+  margin: 60px;
   display: flex;       /* Enables Flexbox */
   gap: 20px;           /* Adds space between columns */
 }
