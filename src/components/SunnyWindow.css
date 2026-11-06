@@ -1,0 +1,61 @@
+.sunny-window {
+  display: block;
+  margin: 0 auto 0.75rem;
+}
+
+.sunny-window__sky {
+  fill: #d6f0e8;
+}
+
+.sunny-window__sun {
+  fill: #f6d58e;
+  transform-origin: 46px 30px;
+  animation: sun-pulse 4s ease-in-out infinite;
+}
+
+.sunny-window__cloud {
+  fill: #ffffff;
+  animation: cloud-drift 9s linear infinite;
+}
+
+.sunny-window__cloud path {
+  stroke: #127a64;
+  stroke-width: 1;
+  stroke-opacity: 0.3;
+}
+
+.sunny-window__cloud--2 {
+  opacity: 0.9;
+  animation-duration: 13s;
+  animation-delay: -6s;
+}
+
+.sunny-window__frame {
+  fill: none;
+  stroke: #127a64;
+  stroke-width: 2.5;
+}
+
+.sunny-window__bars {
+  stroke: #127a64;
+  stroke-width: 2;
+}
+
+.sunny-window__sill {
+  fill: #127a64;
+}
+
+@keyframes cloud-drift {
+  from { transform: translateX(-40px); }
+  to   { transform: translateX(60px); }
+}
+
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunny-window__sun,
+  .sunny-window__cloud { animation: none; }
+}

@@ -1,17 +1,21 @@
 import { TaskItem } from './taskitem';
+import { SunnyWindow } from './SunnyWindow';
 
 export function TaskList({ tasks, onRemoveTask, onUpdateTask }) {
   if (tasks.length === 0) {
-    return <p className="task-list__empty">Nothing here yet.</p>;
-    }
-    const listItems = tasks.map((task, index) =>
-      <li key={task.id}>
-        <TaskItem task={task} index={index} onRemoveTask={onRemoveTask} onUpdateTask={onUpdateTask} />
-      </li>
+    return (
+      <div className="task-empty">
+        <span>
+          <SunnyWindow />
+        </span>
+        <p className="task-empty__title">All clear.</p>
+        <p className="task-empty__subtitle">Add something, or go enjoy the quiet.</p>
+      </div>
     );
+  }
 
   return (
-    <ul class="task-list">
+    <ul className="task-list">
       {tasks.map((task, index) => (
         <TaskItem
           key={task.id}
@@ -20,10 +24,7 @@ export function TaskList({ tasks, onRemoveTask, onUpdateTask }) {
           onRemoveTask={onRemoveTask}
           onUpdateTask={onUpdateTask}
         />
-
       ))}
     </ul>
-    
-  )
+  );
 }
-

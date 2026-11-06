@@ -67,6 +67,7 @@ button {
 
 /* The container holding the columns */
 .flex-container {
+  margin: 10px;
   display: flex;       /* Enables Flexbox */
   gap: 20px;           /* Adds space between columns */
 }
@@ -341,6 +342,25 @@ button {
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--line);
+}
+
+.task-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.task-empty__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #127a64;
+  margin: 0;
+}
+
+.task-empty__subtitle {
+  font-size: 0.95rem;
+  color: #5f7a76;
+  margin: 0.25rem 0 0;
 }
 
 .task-item {

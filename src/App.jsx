@@ -114,9 +114,11 @@ function App() {
               <DragDropProvider onDragEnd={handleDragEnd}>
                 <TaskList tasks={visibleTasks} onRemoveTask={removeTask} onUpdateTask={updateTask} />
               </DragDropProvider>
-              <div className="task-card__footer">
-                <span>Check it off. Make it a Ta Da.</span>
-              </div>
+              {tasks.some(task => !task.done) && (
+                <div className="task-card__footer">
+                  <span>Check it off. Make it a Ta Da.</span>
+                </div>
+              )}
         </div> 
       </section>
  
@@ -131,7 +133,7 @@ function App() {
                 <path d="M9 4l1.6 4.4L15 10l-4.4 1.6L9 16l-1.6-4.4L3 10l4.4-1.6L9 4z" />
                 <path d="M18 3v4M16 5h4M18 15v4M16 17h4" />
               </svg>
-              <p className="motivation__title">Look at you go.</p>
+              <p className="motivation__title">Look at you go!</p>
               <p className="motivation__text">A clear list. A clearer head.</p>
             </div>
 
