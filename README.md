@@ -1,6 +1,6 @@
 # To Do Ta Da
 
-A task dashboard for planning your day and checking things off. Add what you need to get done, break bigger tasks into subitems, and watch your to-dos turn into ta-das.
+A task management dashboard for planning your day and checking things off. Add what you need to get done, break bigger tasks into subitems, and watch your to-dos turn into ta-das.
 
 **👉 Use it now: [leafy-capybara-0d6161.netlify.app](https://leafy-capybara-0d6161.netlify.app)**
 
