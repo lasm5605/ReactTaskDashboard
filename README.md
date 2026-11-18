@@ -4,6 +4,8 @@ A task management dashboard for planning your day and checking things off. Add w
 
 **👉 Use it now: [leafy-capybara-0d6161.netlify.app](https://leafy-capybara-0d6161.netlify.app)**
 
+https://github.com/user-attachments/assets/6ca142ec-7743-4fba-9f44-b96748253ab5
+
 ## Features
 
 - **Add tasks** with an optional due date and time
